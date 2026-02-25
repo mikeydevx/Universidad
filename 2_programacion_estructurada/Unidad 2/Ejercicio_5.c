@@ -1,45 +1,64 @@
 #include <stdio.h>
 
-float convertirPulgadas(float centimentros){
-    float resultado= (float)(centimentros/2.54);
-    return resultado;
-}
-
-float convertirPies(float centimetros){
-    float resultado=(float)(centimetros/30.48);
-    return resultado;
-}
-
 int main(){
+    int modelo;
+    int talla;
+    float costoTela;
+    int lote;
+    float costoMaterial=0;
+    float manoDeObra=0;
+    float costoVentaP=0;
+    float gananciaP=0;
+    float costoProdL=0;
+    float gananciaL=0;
+    
+    printf("Indica el modelo: ");
+    scanf("%d", &modelo);
+    printf("Indica la talla: 32 34 36: ");
+    scanf("%d", &talla);
+    printf("Indica el costo por metro de la tela: ");
+    scanf("%f", &costoTela);
+    printf("Indica el numero de piezas para el lote:");
+    scanf("%d", &lote);
+	
+	printf("\n");
 
-    float centimetros;
-    float resultado=0;
-    int opcion; 
-
-    printf("Ingresa los centimetros: ");
-    scanf("%f", &centimetros);
-
-    printf("1.Pulgadas\n");
-     printf("2.Pies\n");
-     printf("Ingresa la opcion: ");
-     scanf("%d", &opcion);
-
-    switch (opcion)
+    switch (modelo)
     {
     case 1:
-        resultado=convertirPulgadas(centimetros);
-        printf("La conversion de cm a pulgadas es: %f", resultado);
+        costoMaterial=costoTela*1.50;
+        manoDeObra=costoMaterial*0.80;
         break;
     case 2:
-        resultado=convertirPies(centimetros);
-        printf("La conversion de cm a pies es: %f", resultado);
-        break;
-    
+    	costoMaterial = costoTela*1.80;
+    	manoDeObra=costoMaterial*0.95;
+    	break;
     default:
-        printf("Opcion no valida");
-        break;
+
+    printf("El modelo no existe\n");
+	return 0;
     }
 
+    if(talla==36){
+        manoDeObra=manoDeObra*1.03;
+    }
 
-return 0;
+	float costoProduccion= costoMaterial + manoDeObra;
+    gananciaP= costoProduccion *0.30;
+    costoVentaP= costoProduccion + gananciaP;
+    
+    costoProdL= costoProduccion * lote;
+    gananciaL=gananciaP*lote;
+
+	printf("Costo material: %f\n", costoMaterial);
+	printf("Costo mano de obra: %f\n", manoDeObra);
+	printf("Ganancia producto: %f\n", gananciaP);
+	printf("Costo venta: %f\n", costoVentaP);
+	printf("Costo producto: %f\n", costoProdL);
+	printf("Ganancia: %f\n", gananciaL);
+	
+	
+	
+
+    return 0;
 }

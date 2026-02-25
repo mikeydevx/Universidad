@@ -1,32 +1,29 @@
 #include <stdio.h>
-
-int validarPrimo(int numero){
-    int primo = 0;
-    for(int i=2; i<numero; i++){
-        if((numero%i)==0){
-            return primo;
-        }
-    }
-
-    primo=1;
-    return primo;
-}
-
-
 int main(){
+    
+    int semilla1=0;
+    int semilla2=1;
+    int semilla3=0;
     int numero;
-    int resultado; 
+
+
     printf("Ingresa el numero: ");
     scanf("%d", &numero);
-    resultado=validarPrimo(numero);
 
-    if(resultado==1){
-        printf("Es primo\n");
-    }else{
-        printf("No es primo\n");
+    if(numero>=1){
+    
+    for(int i=0; i<=numero; i++){
+    semilla3=semilla1+semilla2;
+    printf("%d, ", semilla1, semilla2, semilla3);
+    
+    semilla1=semilla2;
+    semilla2=semilla3;
+
     }
     
-    printf("El resultado es: %d", resultado);
+    }else{
+        printf("No se puede generar una serie con ese valor");
+    }
 
     return 0;
 }

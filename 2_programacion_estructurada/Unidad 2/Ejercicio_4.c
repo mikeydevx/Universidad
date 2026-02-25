@@ -1,42 +1,41 @@
 #include <stdio.h>
-float ConvertirFahrenheit(int celsius){
-    float resultadoFahrenheit= (float) (celsius * 9/5) + 32;
-    return resultadoFahrenheit;
-}
-
-float ConvertirKelvin(int celsius){
-    return celsius + 273.18;
-}
-
 int main(){
-    int celsius;
-    int opcion;
-    float resultado=0;
-    
-    printf("Ingresa los grados celsius: ");
-    scanf("%d", &celsius);
+    int antiguedad;
+    float sueldo;
+    float montoSueldo; 
+    float montoBono = 0;
+    float bonoAntiguedad = 0;
+    float bonoSueldo = 0; 
+    float pagoConBono;
 
-    printf("1. Grados Fahrenheit\n");
-    printf("2. Grados Kelvin\n");
-    printf("Ingresa una opcion: ");
-    scanf("%d", &opcion);
+    printf("Anios trabajando: ");
+    scanf("%d", &antiguedad);
+    printf("Sueldo empleado: ");
+    scanf("%f", &sueldo);
 
-    switch (opcion)
-    {
-    case 1:
-        resultado=ConvertirFahrenheit(celsius);
-        printf("Los grados celsius a grados Fahrenheit es: %f", resultado);
-        break;
-    case 2:
-        resultado=ConvertirKelvin(celsius);
-        printf("Los grados celsius a grados Kelvin es: %f", resultado);
-        break;
-    default:
-        printf("Opcion no valida");
-        break;
+    if (antiguedad > 2 && antiguedad < 5){ 
+        bonoAntiguedad = sueldo * 0.20;
+    } else if(antiguedad >= 5){ 
+        bonoAntiguedad = sueldo * 0.30;
+    }
+   
+    if(sueldo < 1000){
+        bonoSueldo = sueldo * 0.25;
+    } else if (sueldo >= 1000 && sueldo <= 3500){ 
+        bonoSueldo = sueldo * 0.15;
+    } else {
+        bonoSueldo = sueldo * 0.10;
     }
 
-    
+    if (bonoSueldo > bonoAntiguedad){
+        pagoConBono = sueldo + bonoSueldo;
+       
+        printf("El monto mayor es el del sueldo: %f\nEl monto con bono es: %f", bonoSueldo, pagoConBono);
+    } else {
+        pagoConBono = sueldo + bonoAntiguedad;
+        
+        printf("El monto mayor es el de antiguedad: %f\nEl monto con bono es: %f", bonoAntiguedad, pagoConBono);
+    }
 
     return 0; 
 }
