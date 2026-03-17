@@ -6,13 +6,21 @@
 
 // Ejercicio 1
 int sumar_ej1(int n1, int n2)
- { return n1 + n2; }
-int restar_ej1(int n1, int n2) 
-{ return n1 - n2; }
+{
+    return n1 + n2;
+}
+int restar_ej1(int n1, int n2)
+{
+    return n1 - n2;
+}
 int multiplicar_ej1(int n1, int n2)
- { return n1 * n2; }
+{
+    return n1 * n2;
+}
 float dividir_ej1(int n1, int n2)
- { return (float)n1 / n2; }
+{
+    return (float)n1 / n2;
+}
 
 // Ejercicio 2
 int calcularMenor_ej2(int n1, int n2)
@@ -139,7 +147,7 @@ int validarPrimo_ej10(int numero)
 }
 
 // ==========================================
-// Fuciones principales de cada ejercio 
+// Fuciones principales de cada ejercio
 // ==========================================
 
 void ejercicio1()
